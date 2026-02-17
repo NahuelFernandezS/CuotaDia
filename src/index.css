@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased bg-background text-text-primary;
+  }
+  
+  /* Custom scrollbar - dark theme */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-background-light;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-text-muted rounded-sm;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-text-secondary;
+  }
+}
+
+@layer components {
+  /* Button variants */
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-white font-medium rounded-md
+           hover:bg-primary-hover transition-all duration-200 
+           shadow-glow hover:shadow-glow-lg
+           disabled:bg-text-muted disabled:cursor-not-allowed disabled:shadow-none;
+  }
+  
+  .btn-outline {
+    @apply px-6 py-3 border-2 border-primary text-primary font-medium rounded-md 
+           hover:bg-primary hover:text-white transition-all duration-200
+           disabled:border-text-muted disabled:text-text-muted disabled:cursor-not-allowed;
+  }
+  
+  /* Input styles */
+  .input-field {
+    @apply w-full px-4 py-3 bg-background-light border border-background-lighter 
+           rounded-md text-text-primary placeholder:text-text-muted
+           focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary 
+           transition-all;
+  }
+  
+  .input-field.error {
+    @apply border-error focus:border-error focus:ring-error;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply bg-background-light border border-background-lighter rounded-lg p-6;
+  }
+}

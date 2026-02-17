@@ -7,25 +7,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Strict B&W palette - NO accent colors
-        white: '#FFFFFF',
-        black: '#000000',
-        gray: {
-          50: '#F9FAFB',
-          100: '#F3F4F6',
-          200: '#E5E7EB',
-          300: '#D1D5DB',
-          400: '#9CA3AF',
-          500: '#6B7280',
-          600: '#4B5563',
-          700: '#374151',
-          800: '#1F2937',
-          900: '#111827',
+        // Dark theme palette
+        background: {
+          DEFAULT: '#0A0E14', // Negro azulado oscuro
+          light: '#151922',   // Surface cards
+          lighter: '#1F2937', // Borders
         },
-        // Error state only
+        // Primary orange accent
+        primary: {
+          DEFAULT: '#F97316', // Orange-500
+          hover: '#EA580C',   // Orange-600
+          light: '#FB923C',   // Orange-400
+          dark: '#C2410C',    // Orange-700
+        },
+        // Text colors
+        text: {
+          primary: '#E5E7EB',   // Gray-200
+          secondary: '#9CA3AF', // Gray-400
+          muted: '#6B7280',     // Gray-500
+        },
+        // Keep error for validation
         error: {
-          DEFAULT: '#7F1D1D',
-          light: '#991B1B',
+          DEFAULT: '#DC2626',
+          light: '#EF4444',
         }
       },
       fontFamily: {
@@ -33,11 +37,12 @@ export default {
       },
       borderRadius: {
         'sm': '0.25rem',
-        'md': '0.375rem',
+        'md': '0.5rem',
+        'lg': '0.75rem',
       },
       boxShadow: {
-        'flat': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-        'flat-lg': '0 2px 4px 0 rgb(0 0 0 / 0.08)',
+        'glow': '0 0 20px rgba(249, 115, 22, 0.15)',
+        'glow-lg': '0 0 30px rgba(249, 115, 22, 0.25)',
       },
     },
   },

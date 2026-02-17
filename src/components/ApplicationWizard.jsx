@@ -56,11 +56,11 @@ const ApplicationWizard = () => {
   };
   
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-background">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200">
+      <header className="bg-background-light border-b border-background-lighter">
         <div className="max-w-3xl mx-auto px-4 py-6">
-          <h1 className="text-2xl font-bold tracking-tight">Cuota Día</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-primary">Cuota Día</h1>
         </div>
       </header>
       
@@ -69,39 +69,39 @@ const ApplicationWizard = () => {
           {/* Progress Bar */}
           <div className="mb-12">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-sm font-medium text-text-primary">
                 Paso {currentStep} de 3
               </span>
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-text-secondary">
                 {currentStep === 1 && 'Datos personales'}
                 {currentStep === 2 && 'Información económica'}
                 {currentStep === 3 && 'Confirmación'}
               </span>
             </div>
-            <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
+            <div className="h-1 bg-background-light rounded-full overflow-hidden border border-background-lighter">
               <div 
-                className="h-full bg-black transition-all duration-300"
+                className="h-full bg-primary transition-all duration-300 shadow-glow"
                 style={{ width: `${(currentStep / 3) * 100}%` }}
               />
             </div>
           </div>
           
           {/* Form Card */}
-          <div className="bg-white border border-gray-300 rounded-md p-8">
+          <div className="card shadow-glow">
             {/* Step 1: Personal Data */}
             {currentStep === 1 && (
               <form onSubmit={handleSubmit(handleNext)} className="space-y-6">
                 <div>
-                  <h2 className="text-3xl font-bold tracking-tight mb-2">
+                  <h2 className="text-3xl font-bold tracking-tight mb-2 text-text-primary">
                     Contanos sobre vos
                   </h2>
-                  <p className="text-gray-600">
+                  <p className="text-text-secondary">
                     Necesitamos algunos datos básicos para procesar tu solicitud.
                   </p>
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-text-secondary mb-2">
                     Nombre completo *
                   </label>
                   <input
@@ -119,7 +119,7 @@ const ApplicationWizard = () => {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-text-secondary mb-2">
                     DNI *
                   </label>
                   <input
@@ -137,7 +137,7 @@ const ApplicationWizard = () => {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-text-secondary mb-2">
                     Email *
                   </label>
                   <input
@@ -158,7 +158,7 @@ const ApplicationWizard = () => {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-text-secondary mb-2">
                     Celular *
                   </label>
                   <input
@@ -202,16 +202,16 @@ const ApplicationWizard = () => {
             {currentStep === 2 && (
               <form onSubmit={handleSubmit(handleNext)} className="space-y-6">
                 <div>
-                  <h2 className="text-3xl font-bold tracking-tight mb-2">
+                  <h2 className="text-3xl font-bold tracking-tight mb-2 text-text-primary">
                     Tu situación económica
                   </h2>
-                  <p className="text-gray-600">
+                  <p className="text-text-secondary">
                     Necesitamos entender tu capacidad de pago para ofrecerte las mejores condiciones.
                   </p>
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-text-secondary mb-2">
                     Ocupación *
                   </label>
                   <input
@@ -229,11 +229,11 @@ const ApplicationWizard = () => {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-text-secondary mb-2">
                     Ingreso promedio diario estimado *
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted">
                       $
                     </span>
                     <input
@@ -249,7 +249,7 @@ const ApplicationWizard = () => {
                   {errors.dailyIncome && (
                     <p className="mt-1 text-sm text-error">{errors.dailyIncome.message}</p>
                   )}
-                  <p className="mt-2 text-sm text-gray-500">
+                  <p className="mt-2 text-sm text-text-muted">
                     Este dato nos ayuda a evaluar tu capacidad de pago. Será tratado con total confidencialidad.
                   </p>
                 </div>
@@ -278,64 +278,64 @@ const ApplicationWizard = () => {
             {currentStep === 3 && (
               <form onSubmit={handleSubmit(handleFinalSubmit)} className="space-y-8">
                 <div>
-                  <h2 className="text-3xl font-bold tracking-tight mb-2">
+                  <h2 className="text-3xl font-bold tracking-tight mb-2 text-text-primary">
                     Confirmá tu solicitud
                   </h2>
-                  <p className="text-gray-600">
+                  <p className="text-text-secondary">
                     Revisá los detalles antes de enviar tu solicitud.
                   </p>
                 </div>
                 
                 {/* Loan Summary */}
-                <div className="border border-gray-300 rounded-sm p-6 bg-gray-50">
-                  <h3 className="font-semibold mb-4">Resumen del préstamo</h3>
+                <div className="bg-background border border-background-lighter rounded-lg p-6">
+                  <h3 className="font-semibold mb-4 text-text-primary">Resumen del préstamo</h3>
                   
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Monto solicitado</span>
-                      <span className="font-semibold">{formatCurrency(loanAmount)}</span>
+                      <span className="text-text-secondary">Monto solicitado</span>
+                      <span className="font-semibold text-text-primary">{formatCurrency(loanAmount)}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Plazo</span>
-                      <span className="font-semibold">{loanDays} días</span>
+                      <span className="text-text-secondary">Plazo</span>
+                      <span className="font-semibold text-text-primary">{loanDays} días</span>
                     </div>
-                    <div className="border-t border-gray-300 pt-3 mt-3">
+                    <div className="border-t border-background-lighter pt-3 mt-3">
                       <div className="flex justify-between text-lg">
-                        <span className="font-semibold">Cuota diaria</span>
-                        <span className="font-bold">{formatCurrency(dailyPayment)}</span>
+                        <span className="font-semibold text-text-primary">Cuota diaria</span>
+                        <span className="font-bold text-primary">{formatCurrency(dailyPayment)}</span>
                       </div>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Total a devolver</span>
-                      <span className="font-semibold">{formatCurrency(totalAmount)}</span>
+                      <span className="text-text-secondary">Total a devolver</span>
+                      <span className="font-semibold text-text-primary">{formatCurrency(totalAmount)}</span>
                     </div>
                   </div>
                 </div>
                 
                 {/* Personal Data Summary */}
-                <div className="border border-gray-300 rounded-sm p-6">
-                  <h3 className="font-semibold mb-4">Tus datos</h3>
+                <div className="bg-background border border-background-lighter rounded-lg p-6">
+                  <h3 className="font-semibold mb-4 text-text-primary">Tus datos</h3>
                   
                   <div className="space-y-3 text-sm">
                     <div>
-                      <span className="text-gray-600 block mb-1">Nombre</span>
-                      <span className="font-medium">{applicantData.fullName}</span>
+                      <span className="text-text-secondary block mb-1">Nombre</span>
+                      <span className="font-medium text-text-primary">{applicantData.fullName}</span>
                     </div>
                     <div>
-                      <span className="text-gray-600 block mb-1">DNI</span>
-                      <span className="font-medium">{applicantData.dni}</span>
+                      <span className="text-text-secondary block mb-1">DNI</span>
+                      <span className="font-medium text-text-primary">{applicantData.dni}</span>
                     </div>
                     <div>
-                      <span className="text-gray-600 block mb-1">Email</span>
-                      <span className="font-medium">{applicantData.email}</span>
+                      <span className="text-text-secondary block mb-1">Email</span>
+                      <span className="font-medium text-text-primary">{applicantData.email}</span>
                     </div>
                     <div>
-                      <span className="text-gray-600 block mb-1">Celular</span>
-                      <span className="font-medium">{applicantData.phone}</span>
+                      <span className="text-text-secondary block mb-1">Celular</span>
+                      <span className="font-medium text-text-primary">{applicantData.phone}</span>
                     </div>
                     <div>
-                      <span className="text-gray-600 block mb-1">Ocupación</span>
-                      <span className="font-medium">{applicantData.occupation}</span>
+                      <span className="text-text-secondary block mb-1">Ocupación</span>
+                      <span className="font-medium text-text-primary">{applicantData.occupation}</span>
                     </div>
                   </div>
                 </div>
@@ -346,9 +346,9 @@ const ApplicationWizard = () => {
                     {...register('termsAccepted', { required: true })}
                     type="checkbox"
                     id="terms"
-                    className="mt-1"
+                    className="mt-1 accent-primary"
                   />
-                  <label htmlFor="terms" className="text-sm text-gray-600">
+                  <label htmlFor="terms" className="text-sm text-text-secondary">
                     Acepto los términos y condiciones del servicio. Entiendo que debo devolver 
                     {' '}{formatCurrency(dailyPayment)} por día durante {loanDays} días.
                   </label>

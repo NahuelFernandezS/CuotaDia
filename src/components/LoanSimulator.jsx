@@ -41,9 +41,9 @@ const LoanSimulator = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="border-b border-gray-200">
+      <header className="border-b border-background-lighter bg-background-light">
         <div className="max-w-6xl mx-auto px-4 py-6">
-          <h1 className="text-2xl font-bold tracking-tight">Cuota Día</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-primary">Cuota Día</h1>
         </div>
       </header>
       
@@ -52,24 +52,24 @@ const LoanSimulator = () => {
         <div className="w-full max-w-2xl">
           {/* Headline */}
           <div className="text-center mb-12">
-            <h2 className="text-5xl font-bold tracking-tight mb-4">
+            <h2 className="text-5xl font-bold tracking-tight mb-4 text-text-primary">
               Liquidez inmediata.<br />
               Pagos diarios simples.
             </h2>
-            <p className="text-xl text-gray-600 max-w-xl mx-auto">
+            <p className="text-xl text-text-secondary max-w-xl mx-auto">
               Solicitá el monto que necesitás y devolvelo en cuotas diarias flexibles.
             </p>
           </div>
           
           {/* Simulator Card */}
-          <div className="border border-gray-300 rounded-md p-8 bg-white">
+          <div className="card shadow-glow">
             {/* Amount Input */}
             <div className="mb-8">
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="block text-sm font-medium text-text-secondary mb-3">
                 ¿Cuánto necesitás?
               </label>
               <div className="relative">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted">
                   <DollarSign size={24} strokeWidth={1.5} />
                 </div>
                 <input
@@ -77,8 +77,10 @@ const LoanSimulator = () => {
                   value={amount === 0 ? '' : amount.toLocaleString('es-AR')}
                   onChange={handleAmountChange}
                   placeholder="50.000"
-                  className="w-full pl-14 pr-4 py-4 text-3xl font-semibold border border-gray-300 rounded-sm 
-                           focus:outline-none focus:border-black transition-colors"
+                  className="w-full pl-14 pr-4 py-4 text-3xl font-semibold bg-background 
+                           border border-background-lighter rounded-md text-text-primary
+                           focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary 
+                           transition-all"
                 />
               </div>
               <div className="mt-3 flex gap-2">
@@ -89,7 +91,8 @@ const LoanSimulator = () => {
                       setAmount(preset);
                       setLoanAmount(preset);
                     }}
-                    className="px-3 py-1.5 text-sm border border-gray-300 rounded-sm hover:border-black transition-colors"
+                    className="px-3 py-1.5 text-sm bg-background border border-background-lighter 
+                             rounded-md hover:border-primary hover:text-primary transition-all"
                   >
                     {formatCurrency(preset)}
                   </button>
@@ -99,7 +102,7 @@ const LoanSimulator = () => {
             
             {/* Days Selector */}
             <div className="mb-8">
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="block text-sm font-medium text-text-secondary mb-3">
                 Plazo de devolución
               </label>
               <div className="grid grid-cols-4 gap-3">
@@ -107,10 +110,10 @@ const LoanSimulator = () => {
                   <button
                     key={days}
                     onClick={() => handleDaySelect(days)}
-                    className={`py-4 px-4 rounded-sm font-medium transition-all ${
+                    className={`py-4 px-4 rounded-md font-medium transition-all ${
                       loanDays === days
-                        ? 'bg-black text-white'
-                        : 'border border-gray-300 hover:border-black'
+                        ? 'bg-primary text-white shadow-glow'
+                        : 'bg-background border border-background-lighter hover:border-primary hover:text-primary'
                     }`}
                   >
                     {days} días
@@ -120,28 +123,28 @@ const LoanSimulator = () => {
             </div>
             
             {/* Divider */}
-            <div className="border-t border-gray-200 my-8"></div>
+            <div className="border-t border-background-lighter my-8"></div>
             
             {/* Results - Daily Payment Highlight */}
             <div className="text-center mb-8">
-              <div className="text-sm text-gray-600 mb-2">Tu cuota diaria sería</div>
-              <div className="text-6xl font-bold tracking-tight mb-1">
+              <div className="text-sm text-text-secondary mb-2">Tu cuota diaria sería</div>
+              <div className="text-6xl font-bold tracking-tight mb-1 text-primary">
                 {formatCurrency(dailyPayment)}
               </div>
-              <div className="text-sm text-gray-500">
+              <div className="text-sm text-text-muted">
                 durante {loanDays} días
               </div>
             </div>
             
             {/* Breakdown */}
-            <div className="grid grid-cols-2 gap-6 p-6 bg-gray-50 rounded-sm mb-8">
+            <div className="grid grid-cols-2 gap-6 p-6 bg-background rounded-md mb-8 border border-background-lighter">
               <div>
-                <div className="text-sm text-gray-600 mb-1">Recibís</div>
-                <div className="text-2xl font-semibold">{formatCurrency(amount)}</div>
+                <div className="text-sm text-text-secondary mb-1">Recibís</div>
+                <div className="text-2xl font-semibold text-text-primary">{formatCurrency(amount)}</div>
               </div>
               <div>
-                <div className="text-sm text-gray-600 mb-1">Total a devolver</div>
-                <div className="text-2xl font-semibold">{formatCurrency(totalAmount)}</div>
+                <div className="text-sm text-text-secondary mb-1">Total a devolver</div>
+                <div className="text-2xl font-semibold text-text-primary">{formatCurrency(totalAmount)}</div>
               </div>
             </div>
             
@@ -157,15 +160,15 @@ const LoanSimulator = () => {
           </div>
           
           {/* Trust indicators */}
-          <div className="mt-8 text-center text-sm text-gray-500">
+          <div className="mt-8 text-center text-sm text-text-muted">
             <p>Sin costos ocultos • Respuesta en 24hs • 100% online</p>
           </div>
         </div>
       </main>
       
       {/* Footer */}
-      <footer className="border-t border-gray-200 py-8">
-        <div className="max-w-6xl mx-auto px-4 text-center text-sm text-gray-500">
+      <footer className="border-t border-background-lighter bg-background-light py-8">
+        <div className="max-w-6xl mx-auto px-4 text-center text-sm text-text-muted">
           © 2024 Cuota Día. Todos los derechos reservados.
         </div>
       </footer>
