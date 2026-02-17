@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import LoanSimulator from './components/LoanSimulator';
 import ApplicationWizard from './components/ApplicationWizard';
 
