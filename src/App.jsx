@@ -9,7 +9,7 @@ function App() {
         <Route path="/" element={<LoanSimulator />} />
         <Route path="/aplicar" element={<ApplicationWizard />} />
       </Routes>
-    </Router>
+    </Router> 
   );
 }
 
